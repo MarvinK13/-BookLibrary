@@ -32,29 +32,29 @@ public class Library {
         for (Member memberelement : members) {
             if (memberelement.getId() == memberid) {
                 memberelement.setBooks(bookid);
-                for (Book bookElement : books) {
-                    if (bookElement.getId() == bookid) {
-                        bookElement.setBookRentedFrom(memberid);
-                        bookElement.setStatus(true);
-                    }
-                }
+
+            }
+        }
+        for (Book bookElement : books) {
+            if (bookElement.getId() == bookid) {
+                bookElement.setBookRentedFrom(memberid);
+                bookElement.setStatus(true);
             }
         }
     }
 
     public void giveBookback(String memberid, int bookid) {
-        int counter=0;
         for (Member memberelement : members) {
-            if (memberelement.getId() == memberid) {
-                memberelement.removeBook(counter);
-                for (Book bookElement : books) {
-                    if (bookElement.getId() == bookid) {
-                        bookElement.setBookRentedFrom(null);
-                        bookElement.setStatus(false);
-                    }
-                }
+            if (memberelement.getId().equals(memberid)) {
+                memberelement.removeBook(memberelement.getPositionOfBook(bookid));
             }
-            counter++;
+
+        }
+        for (Book bookElement : books) {
+            if (bookElement.getId() == bookid) {
+                bookElement.setBookRentedFrom(null);
+                bookElement.setStatus(false);
+            }
         }
     }
 
