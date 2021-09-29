@@ -21,7 +21,7 @@ public class Member {
     public String getId() {
         return id;
     }
-
+//muss überarbeitet werden
     public void removeBook(int id) {
         books.remove(id);
     }

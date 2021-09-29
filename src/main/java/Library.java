@@ -32,7 +32,6 @@ public class Library {
         for (Member memberelement : members) {
             if (memberelement.getId() == memberid) {
                 memberelement.setBooks(bookid);
-
                 for (Book bookElement : books) {
                     if (bookElement.getId() == bookid) {
                         bookElement.setBookRentedFrom(memberid);
@@ -44,10 +43,10 @@ public class Library {
     }
 
     public void giveBookback(String memberid, int bookid) {
+        int counter=0;
         for (Member memberelement : members) {
             if (memberelement.getId() == memberid) {
-                memberelement.removeBook(bookid);
-
+                memberelement.removeBook(counter);
                 for (Book bookElement : books) {
                     if (bookElement.getId() == bookid) {
                         bookElement.setBookRentedFrom(null);
@@ -55,6 +54,7 @@ public class Library {
                     }
                 }
             }
+            counter++;
         }
     }
 
@@ -71,14 +71,20 @@ public class Library {
     public void printMembersAndBooks() {
         String nameMember;
         String nameBook;
+        String id;
+        boolean status;
 
+        System.out.println("Books: ");
         for (Book bookElement : books) {
             nameBook = bookElement.getName();
-            System.out.println("Book: " + nameBook+" "+bookElement.getBookRentedFrom());
+            id = bookElement.getBookRentedFrom();
+            status = bookElement.getSatus();
+            System.out.println("=> " + nameBook + " geliehen von: " + id + " Status: " + status);
         }
+        System.out.println("Members: ");
         for (Member memberElement : members) {
             nameMember = memberElement.getName();
-            System.out.println("Member: " + nameMember);
+            System.out.println("=> " + nameMember);
         }
     }
 
@@ -90,7 +96,7 @@ public class Library {
         return members;
     }
 
-    public String giveName(String name){
+    public String giveName(String name) {
         for (Member element : members) {
             if (element.getName().equals(name)) {
                 return element.getId();
