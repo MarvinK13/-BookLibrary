@@ -30,8 +30,8 @@ public class Library {
 
     public void rentBook(String memberid, int bookid) {
         for (Member memberelement : members) {
-            if (memberelement.getId() == memberid) {
-                memberelement.setBooks(bookid);
+            if (memberelement.getId().equals(memberid)) {
+                memberelement.addBookToList(bookid);
 
             }
         }
@@ -46,7 +46,7 @@ public class Library {
     public void giveBookback(String memberid, int bookid) {
         for (Member memberelement : members) {
             if (memberelement.getId().equals(memberid)) {
-                memberelement.removeBook(memberelement.getPositionOfBook(bookid));
+                memberelement.removeBookFromList(memberelement.getPositionOfBook(bookid));
             }
 
         }
@@ -96,7 +96,7 @@ public class Library {
         return members;
     }
 
-    public String giveName(String name) {
+    public String giveIdFromUsers(String name) {
         for (Member element : members) {
             if (element.getName().equals(name)) {
                 return element.getId();

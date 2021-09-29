@@ -14,7 +14,7 @@ public class Member {
         return books;
     }
 
-    public void setBooks(int id) {
+    public void addBookToList(int id) {
         books.add(id);
     }
 
@@ -23,7 +23,7 @@ public class Member {
     }
 
     //muss überarbeitet werden
-    public void removeBook(int id) {
+    public void removeBookFromList(int id) {
         books.remove(id);
     }
 
