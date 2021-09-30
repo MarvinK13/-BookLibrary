@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Member {
-    String name;
-    int id;
-    ArrayList<Integer> books = new ArrayList<>();
+    private String name;
+    private int id;
+    private ArrayList<Integer> books = new ArrayList<>();
 
     Member(String name, int id) {
         this.name = name;
@@ -24,14 +24,15 @@ public class Member {
 
     //muss überarbeitet werden
     public void removeBookFromList(int id) {
-        books.remove(id);
+        int pos=getPositionOfBook(id);
+        books.remove(pos);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPositionOfBook(int id) {
+    private int getPositionOfBook(int id) {
         int pos = 0;
         for (int i = 0; i < books.size(); i++) {
             if (books.contains(id)) {

@@ -15,7 +15,7 @@ public class BookTest {
         serviceUnderTest.addBook("Isch, ein Roman", 2);
         int id = members.get(0).getId();
         serviceUnderTest.rentBook(id, 2);
-        Boolean ausgabe = books.get(0).getStatus();
+        Boolean ausgabe = books.get(0).isRented();
 
         assertEquals(true, ausgabe);
     }
@@ -30,7 +30,7 @@ public class BookTest {
         serviceUnderTest.addBook("Isch, ein Roman", 2);
         int id = members.get(0).getId();
         serviceUnderTest.rentBook(id, 2);
-        int ausgabe = books.get(0).bookRentedFrom;
+        int ausgabe = books.get(0).getBookRentedFrom();
 
         assertEquals(id, ausgabe);
     }
@@ -66,7 +66,7 @@ public class BookTest {
 
         serviceUnderTest.addMember("Jörg");
         serviceUnderTest.addBook("Isch, ein Roman", 2);
-        boolean ausgabe = books.get(0).getStatus();
+        boolean ausgabe = books.get(0).isRented();
 
         assertEquals(false, ausgabe);
     }

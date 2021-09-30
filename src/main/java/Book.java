@@ -1,8 +1,8 @@
 public class Book {
-    String name;
-    int id;
-    int bookRentedFrom;
-    boolean status;
+    private String name;
+    private int id;
+    private int bookRentedFrom;
+    private boolean status;
 
     Book(String name, int id) {
         this.name = name;
@@ -21,15 +21,15 @@ public class Book {
         return bookRentedFrom;
     }
 
-    public boolean getStatus() {
+    public boolean isRented() {
         return status;
     }
-    
-    public void setStatus(boolean status){
-        this.status=status;
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public void setBookRentedFrom(int bookRentedFrom){
-        this.bookRentedFrom=bookRentedFrom;
+    public void setBookRentedFrom(int bookRentedFrom) {
+        this.bookRentedFrom = bookRentedFrom;
     }
 }

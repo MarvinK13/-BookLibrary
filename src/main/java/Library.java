@@ -46,7 +46,7 @@ public class Library {
     public void giveBookback(int memberid, int bookid) {
         for (Member memberelement : members) {
             if (memberelement.getId()==memberid) {
-                memberelement.removeBookFromList(memberelement.getPositionOfBook(bookid));
+                memberelement.removeBookFromList(bookid);
             }
 
         }
@@ -72,7 +72,7 @@ public class Library {
         for (Book bookElement : books) {
             nameBook = bookElement.getName();
             id = bookElement.getBookRentedFrom();
-            status = bookElement.getStatus();
+            status = bookElement.isRented();
             System.out.println("=> " + nameBook + " geliehen von: " + id + " Status: " + status);
         }
         System.out.println("Members: ");
