@@ -13,13 +13,13 @@ public class Main {
         library.addBook("Rammstein", 9);
         library.printMembersAndBooks();
 
-        int id = library.giveIdFromUsers("Jörg");
+        int id = library.findUserIdByName("Jörg");
         library.rentBook(id, 69);
-        int id2 = library.giveIdFromUsers("Uwe");
+        int id2 = library.findUserIdByName("Uwe");
         library.rentBook(id2, 9);
         library.printMembersAndBooks();
 
-        library.giveBookback(id, 69);
+        library.giveBookBack(id, 69);
         library.printMembersAndBooks();
 
     }

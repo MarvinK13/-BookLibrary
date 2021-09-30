@@ -2,7 +2,7 @@ public class Book {
     private String name;
     private int id;
     private int bookRentedFrom;
-    private boolean status;
+    private boolean isRented;
 
     Book(String name, int id) {
         this.name = name;
@@ -22,14 +22,14 @@ public class Book {
     }
 
     public boolean isRented() {
-        return status;
+        return isRented;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setRented(boolean rented) {
+        this.isRented = rented;
     }
 
-    public void setBookRentedFrom(int bookRentedFrom) {
-        this.bookRentedFrom = bookRentedFrom;
+    public void setBookRentedFrom(int memberId) {
+        this.bookRentedFrom = memberId;
     }
 }

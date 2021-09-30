@@ -10,7 +10,7 @@ public class Member {
         this.id = id;
     }
 
-    public ArrayList<Integer> getBooks() {
+    public ArrayList<Integer> getBookList() {
         return books;
     }
 
@@ -22,16 +22,6 @@ public class Member {
         return id;
     }
 
-    //muss überarbeitet werden
-    public void removeBookFromList(int id) {
-        int pos=getPositionOfBook(id);
-        books.remove(pos);
-    }
-
-    public String getName() {
-        return name;
-    }
-
     private int getPositionOfBook(int id) {
         int pos = 0;
         for (int i = 0; i < books.size(); i++) {
@@ -40,5 +30,14 @@ public class Member {
             }
         }
         return pos;
+    }
+
+    public void removeBookFromList(int id) {
+        int pos=getPositionOfBook(id);
+        books.remove(pos);
+    }
+
+    public String getName() {
+        return name;
     }
 }

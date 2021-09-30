@@ -6,28 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MemberTest {
     @Test
-    public void testgetName() {
-        Library serviceUnderTest = new Library();
-        ArrayList<Member> members = serviceUnderTest.getMembers();
+    public void testGetName() {
+        Member member=new Member("Jörg",2);
 
-        serviceUnderTest.addMember("Jörg");
-        serviceUnderTest.addBook("Isch, ein Roman", 2);
-        String ausgabe = members.get(0).getName();
+        member.addBookToList(2);
+        member.removeBookFromList(2);
+        ArrayList<Integer>test=member.getBookList();
 
-        assertEquals("Jörg", ausgabe);
+        assertEquals(true, test.isEmpty());
     }
 
-    @Test
-    public void testgetBooks() {
-        Library serviceUnderTest = new Library();
-        ArrayList<Member> members = serviceUnderTest.getMembers();
 
-        serviceUnderTest.addMember("Jörg");
-        serviceUnderTest.addBook("Isch, ein Roman", 2);
-        int id=serviceUnderTest.giveIdFromUsers("Jörg");
-        serviceUnderTest.rentBook(id,2);
-        ArrayList<Integer> books = members.get(0).getBooks();
-
-        assertEquals(2, books.get(0));
-    }
 }
