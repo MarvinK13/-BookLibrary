@@ -1,7 +1,7 @@
 public class Book {
     String name;
     int id;
-    String bookRentedFrom;
+    int bookRentedFrom;
     boolean status;
 
     Book(String name, int id) {
@@ -17,21 +17,19 @@ public class Book {
         return name;
     }
 
-    public String getBookRentedFrom() {
+    public int getBookRentedFrom() {
         return bookRentedFrom;
     }
 
-    public boolean getSatus() {
+    public boolean getStatus() {
         return status;
     }
-
-
-
+    
     public void setStatus(boolean status){
         this.status=status;
     }
 
-    public void setBookRentedFrom(String bookRentedFrom){
+    public void setBookRentedFrom(int bookRentedFrom){
         this.bookRentedFrom=bookRentedFrom;
     }
 }

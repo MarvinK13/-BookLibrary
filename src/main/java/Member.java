@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Member {
     String name;
-    String id;
+    int id;
     ArrayList<Integer> books = new ArrayList<>();
 
-    Member(String name, String id) {
+    Member(String name, int id) {
         this.name = name;
         this.id = id;
     }
@@ -18,7 +18,7 @@ public class Member {
         books.add(id);
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

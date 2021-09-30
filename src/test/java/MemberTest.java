@@ -24,7 +24,7 @@ public class MemberTest {
 
         serviceUnderTest.addMember("Jörg");
         serviceUnderTest.addBook("Isch, ein Roman", 2);
-        String id=serviceUnderTest.giveIdFromUsers("Jörg");
+        int id=serviceUnderTest.giveIdFromUsers("Jörg");
         serviceUnderTest.rentBook(id,2);
         int ausgabe = members.get(0).getPositionOfBook(2);
 
@@ -38,7 +38,7 @@ public class MemberTest {
 
         serviceUnderTest.addMember("Jörg");
         serviceUnderTest.addBook("Isch, ein Roman", 2);
-        String id=serviceUnderTest.giveIdFromUsers("Jörg");
+        int id=serviceUnderTest.giveIdFromUsers("Jörg");
         serviceUnderTest.rentBook(id,2);
         ArrayList<Integer> books = members.get(0).getBooks();
 

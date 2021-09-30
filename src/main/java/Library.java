@@ -20,7 +20,7 @@ public class Library {
         members.add(new Member(name, idGenerator()));
     }
 
-    public void removeMember(String id) {
+    public void removeMember(int id) {
         for (Member element : members) {
             if (element.getId() == id) {
                 members.remove(element);
@@ -28,9 +28,9 @@ public class Library {
         }
     }
 
-    public void rentBook(String memberid, int bookid) {
+    public void rentBook(int memberid, int bookid) {
         for (Member memberelement : members) {
-            if (memberelement.getId().equals(memberid)) {
+            if (memberelement.getId()==memberid) {
                 memberelement.addBookToList(bookid);
 
             }
@@ -43,42 +43,36 @@ public class Library {
         }
     }
 
-    public void giveBookback(String memberid, int bookid) {
+    public void giveBookback(int memberid, int bookid) {
         for (Member memberelement : members) {
-            if (memberelement.getId().equals(memberid)) {
+            if (memberelement.getId()==memberid) {
                 memberelement.removeBookFromList(memberelement.getPositionOfBook(bookid));
             }
 
         }
         for (Book bookElement : books) {
             if (bookElement.getId() == bookid) {
-                bookElement.setBookRentedFrom(null);
+                bookElement.setBookRentedFrom(0);
                 bookElement.setStatus(false);
             }
         }
     }
 
-    private String idGenerator() {
-        String id = "";
-        int random;
-        for (int i = 0; i < 10; i++) {
-            random = (int) (Math.random() * 9);
-            id = id + random;
-        }
-        return id;
+    private int idGenerator() {
+        return (int) (Math.random() * 10000000);
     }
 
     public void printMembersAndBooks() {
         String nameMember;
         String nameBook;
-        String id;
+        int id;
         boolean status;
 
-        System.out.println("Books: ");
+        System.out.println("\nBooks: ");
         for (Book bookElement : books) {
             nameBook = bookElement.getName();
             id = bookElement.getBookRentedFrom();
-            status = bookElement.getSatus();
+            status = bookElement.getStatus();
             System.out.println("=> " + nameBook + " geliehen von: " + id + " Status: " + status);
         }
         System.out.println("Members: ");
@@ -96,13 +90,13 @@ public class Library {
         return members;
     }
 
-    public String giveIdFromUsers(String name) {
+    public int giveIdFromUsers(String name) {
         for (Member element : members) {
             if (element.getName().equals(name)) {
                 return element.getId();
             }
         }
-        return null;
+        return 0;
     }
 
 }
