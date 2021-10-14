@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Member {
     private String name;
 
-    Member(String name) {
+    public Member(String name) {
         this.name = name;
     }
 
