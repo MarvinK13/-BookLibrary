@@ -17,9 +17,9 @@ public class Main {
         //repo2.addMember(member);
         //repo2.removeMemberById(1);
 
-        RentedBooks rentedBooks=new RentedBooks(2,1);
+        RentedBooks rentedBooks=new RentedBooks(1,1);
         RentedAtRepository repository=new RentedAtRepository();
-        repository.addRented(rentedBooks);
+        //repository.addRented(rentedBooks);
         //repository.removeRentedByBookId(1);
 
 

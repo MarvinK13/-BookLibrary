@@ -7,6 +7,7 @@ public class Book {
     private String author;
     private int pages;
     private int ISBN;
+    private int id;
 
 
     public Book(String author, String title, int pages, int ISBN) {
@@ -14,6 +15,10 @@ public class Book {
         this.title = title;
         this.pages = pages;
         this.ISBN = ISBN;
+    }
+
+    public Book(){
+
     }
 
     public int getISBN() {
@@ -46,6 +51,14 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
