@@ -65,7 +65,7 @@ public class MemberRepository {
     }
 
     public List<Member> findMembersByName(String name) {
-        String sql = "SELECT * FROM books WHERE title = ?";
+        String sql = "SELECT * FROM members WHERE name = ?";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -139,7 +139,7 @@ public class MemberRepository {
             List<Member> members = new LinkedList<>();
             while (resultSet.next()) {
                 Member member = new Member();
-                member.setId(resultSet.getInt("bookId"));
+                member.setId(resultSet.getInt("userId"));
                 member.setName(resultSet.getString("name"));
                 members.add(member);
             }

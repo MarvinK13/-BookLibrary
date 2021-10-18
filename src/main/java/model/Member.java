@@ -10,7 +10,7 @@ public class Member {
         this.name = name;
     }
 
-    public Member(){
+    public Member() {
 
     }
 
@@ -28,5 +28,13 @@ public class Member {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "ISBN= " + name +
+                ", title= '" + id + '\'' +
+                '}';
     }
 }

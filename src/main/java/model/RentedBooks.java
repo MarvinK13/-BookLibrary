@@ -1,16 +1,20 @@
 package model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class RentedBooks {
     private int bookId;
-    private int memberId;
+    private int userId;
     private Date rentedAt;
+    private String overdrawn;
 
-    public RentedBooks(int bookId, int memberId){
-        this.bookId=bookId;
-        this.memberId=memberId;
+    public RentedBooks(int bookId, int memberId) {
+        this.bookId = bookId;
+        this.userId = memberId;
+
+    }
+
+    public RentedBooks() {
 
     }
 
@@ -22,12 +26,12 @@ public class RentedBooks {
         this.bookId = bookId;
     }
 
-    public int getMemberId() {
-        return memberId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public Date getRentedAt() {
@@ -36,5 +40,23 @@ public class RentedBooks {
 
     public void setRentedAt(Date rentedAt) {
         this.rentedAt = rentedAt;
+    }
+
+    public String getOverdrawn() {
+        return overdrawn;
+    }
+
+    public void setOverdrawn(String overdrawn) {
+        this.overdrawn = overdrawn;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId= " + bookId +
+                ", userId= '" + userId + '\'' +
+                ", rentedAt= '" + rentedAt + '\'' +
+                ", overdrawn= " + overdrawn +
+                '}';
     }
 }
