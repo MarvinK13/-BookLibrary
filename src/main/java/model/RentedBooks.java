@@ -52,11 +52,10 @@ public class RentedBooks {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Book= " +
                 "bookId= " + bookId +
-                ", userId= '" + userId + '\'' +
-                ", rentedAt= '" + rentedAt + '\'' +
-                ", overdrawn= " + overdrawn +
-                '}';
+                "| userId= '" + userId + '\'' +
+                "| rentedAt= '" + rentedAt + '\'' +
+                "| overdrawn= " + overdrawn;
     }
 }

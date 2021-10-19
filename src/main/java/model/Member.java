@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Member {
     private String name;
     private int id;
@@ -32,9 +30,8 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Book= " +
                 "ISBN= " + name +
-                ", title= '" + id + '\'' +
-                '}';
+                "| title= '" + id + '\'';
     }
 }
