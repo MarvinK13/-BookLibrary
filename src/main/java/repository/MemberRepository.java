@@ -16,7 +16,7 @@ public class MemberRepository {
 
     public void addMember(Member member) {
         String sql = "INSERT INTO members(name) VALUES(?)";
-
+//TODO: email gebDatum
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {

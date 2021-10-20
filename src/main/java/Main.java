@@ -1,9 +1,5 @@
 import model.Member;
-import model.RentedBooks;
-import repository.BookRepository;
 import model.Book;
-import repository.MemberRepository;
-import repository.RentedAtRepository;
 import service.Admin;
 import service.User;
 
@@ -13,8 +9,10 @@ public class Main {
     public static void main(String[] args) {
 
         Admin admin=new Admin();
-        User user=new User();
-        user.rentBook(3,3);
+       User user=new User();
+       user.rentBook(1,1);
+
+       //admin.seeRentedBooks();
 
     }
 

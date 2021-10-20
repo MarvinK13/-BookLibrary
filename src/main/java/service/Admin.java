@@ -49,7 +49,7 @@ public class Admin {
     public void seeRentedBooks() {
         RentedBooks rentedBooks = new RentedBooks();
         List<RentedBooks> rentedBooks1 = repository.findAllRentedBooks();
-
+//TODO: name book title ,isbn
         System.out.println("==============================");
         System.out.println("The titles of all rented books are: ");
         System.out.println("");
@@ -76,4 +76,5 @@ public class Admin {
         System.out.println("==============================");
         System.out.println("");
     }
+    //TODO: kaputte bücher kaufen ,adim unendlich ausleihen
 }

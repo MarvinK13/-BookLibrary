@@ -1,0 +1,64 @@
+
+.header {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 120px;
+    box-sizing: border-box;
+    font-family: Arial
+}
+table {
+    font-size: 25px;
+    table-layout: fixed;
+    width: 100%;
+    font-family: Arial
+}
+td {
+    border-spacing: 30px;
+    text-align: center;
+    border: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+th {
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+tr:hover {
+    background-color: rgba(0, 165, 210, 0.51);
+
+}
+tr {
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+
+}
+
+button{
+    transition: width 2s, height 4s;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    margin: 10px 10px;
+    color: white;
+    background-color: black;
+
+
+
+}
+button:hover{
+    background-image: url('G.jpg');
+    background-size: 150px;
+}
+
+
+

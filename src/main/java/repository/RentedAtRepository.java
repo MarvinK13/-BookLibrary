@@ -3,25 +3,32 @@ package repository;
 import configuration.DatabaseConnection;
 import model.RentedBooks;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 public class RentedAtRepository {
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public void addRented(RentedBooks rentedBooks) {
-        String sql = "INSERT INTO rentedBooks (bookId,userId,rentedAt)VALUES ((SELECT bookId from books Where bookId= ?),(SELECT userId from members Where userId= ?),'2021-07-13')";
-
+        String sql = "INSERT INTO rentedBooks (bookId,userId,rentedAt,overdrawn,givenBack)VALUES ((SELECT bookId from books Where bookId= ?),(SELECT userId from members Where userId= ?),?,?,null)";
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {
+            Calendar calender= Calendar.getInstance();
+            Date now=calender.getTime();
+            calender.add(Calendar.DAY_OF_YEAR,14);
+            Date calenderTime = calender.getTime();
+            Timestamp endDate=new Timestamp(calenderTime.getTime());
+
             prepareStatement.setInt(1, rentedBooks.getBookId());
             prepareStatement.setInt(2,rentedBooks.getUserId());
+            prepareStatement.setTimestamp(3,new Timestamp(now.getTime()));
+            prepareStatement.setTimestamp(4,endDate);
 
             prepareStatement.executeUpdate();
             System.out.println("Finished Task");
@@ -37,10 +44,14 @@ public class RentedAtRepository {
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {
-            prepareStatement.setString(1,overdrawn);
+            Calendar calender= Calendar.getInstance();
+            calender.add(Calendar.DAY_OF_YEAR,7);
+            Date calenderTime = calender.getTime();
+            Timestamp endDate=new Timestamp(calenderTime.getTime());
+
+            prepareStatement.setTimestamp(1,endDate);
             prepareStatement.setInt(2, bookId);
             prepareStatement.setInt(3, userId);
-            //prepareStatement.setDate(3,'2021-07-13');
 
             prepareStatement.executeUpdate();
             System.out.println("Finished Task");
@@ -50,14 +61,16 @@ public class RentedAtRepository {
         }
     }
 
-    public void removeRentedByBookId(int bookId,int userId) {
-        String sql = "DELETE FROM rentedBooks WHERE bookId = ? AND userId = ?";
-
+    public void giveBackRentedByBookId(int bookId, int userId) {
+        String sql = "UPDATE rentedBooks SET givenBack= ? WHERE bookId = ? AND userId = ?";
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {
-            prepareStatement.setInt(1, bookId);
-            prepareStatement.setInt(2, userId);
+            Calendar calender= Calendar.getInstance();
+            Date now=calender.getTime();
+            prepareStatement.setTimestamp(1,new Timestamp(now.getTime()));
+            prepareStatement.setInt(2, bookId);
+            prepareStatement.setInt(3, userId);
             prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {
@@ -104,6 +117,7 @@ public class RentedAtRepository {
                 rentedBook.setBookId(resultSet.getInt("bookId"));
                 rentedBook.setUserId(resultSet.getInt("userId"));
                 rentedBook.setOverdrawn(resultSet.getString("overdrawn"));
+                rentedBook.setRentedAt(resultSet.getDate("rentedAt"));
                 rentedBooks.add(rentedBook);
             }
             return rentedBooks;
@@ -136,6 +150,26 @@ public class RentedAtRepository {
         }
 
         return null;
+    }
+
+    public int findBookIdbyUser(int bookId,int userId) {
+        String sql = "SELECT Count(*) FROM rentedBooks WHERE userId = ? AND bookId = ?";
+
+        try (Connection databaseConnection = this.databaseConnection.getConnection();
+             PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
+        ) {
+            prepareStatement.setInt(1, userId);
+            prepareStatement.setInt(2, bookId);
+            ResultSet resultSet = prepareStatement.executeQuery();
+
+            resultSet.next();
+            int id = resultSet.getInt("Count(*)");
+            resultSet.close();
+            return id;
+        } catch (SQLException exception) {
+            System.out.println("Error while connecting to database " + exception);
+        }
+        return 0;
     }
 
 
