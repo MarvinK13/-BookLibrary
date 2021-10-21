@@ -81,7 +81,7 @@ public class RentedAtRepository {
     }
 
     public List<RentedBooks> findAllRentedBooks() {
-        String sql = "SELECT * FROM rentedBooks";
+        String sql = "SELECT members.name,books.title,rentedAt,overdrawn,rentedBooks.bookId,rentedBooks.userId FROM rentedBooks,members,books Where members.userId=rentedBooks.userId Group By books.title";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -94,6 +94,8 @@ public class RentedAtRepository {
                 rentedBook.setUserId(resultSet.getInt("userId"));
                 rentedBook.setRentedAt(resultSet.getDate("rentedAt"));
                 rentedBook.setOverdrawn(resultSet.getString("overdrawn"));
+                rentedBook.setName(resultSet.getString("name"));
+                rentedBook.setTitle(resultSet.getString("title"));
                 rentedBooks.add(rentedBook);
             }
             return rentedBooks;
@@ -105,7 +107,7 @@ public class RentedAtRepository {
     }
 
     public List<RentedBooks> findAllRentedBooksByUserId(int id) {
-        String sql = "SELECT * FROM rentedBooks WHERE userId = ?";
+        String sql = "SELECT members.name,books.title,rentedAt,overdrawn,rentedBooks.bookId,rentedBooks.userId FROM rentedBooks,members,books Where members.userId=rentedBooks.userId AND members.userId= ? Group By books.title";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -117,8 +119,10 @@ public class RentedAtRepository {
                 RentedBooks rentedBook = new RentedBooks();
                 rentedBook.setBookId(resultSet.getInt("bookId"));
                 rentedBook.setUserId(resultSet.getInt("userId"));
-                rentedBook.setOverdrawn(resultSet.getString("overdrawn"));
                 rentedBook.setRentedAt(resultSet.getDate("rentedAt"));
+                rentedBook.setOverdrawn(resultSet.getString("overdrawn"));
+                rentedBook.setName(resultSet.getString("name"));
+                rentedBook.setTitle(resultSet.getString("title"));
                 rentedBooks.add(rentedBook);
             }
             return rentedBooks;
@@ -130,7 +134,7 @@ public class RentedAtRepository {
     }
 
     public List<RentedBooks> findAllRentedBooksByBookId(int id) {
-        String sql = "SELECT * FROM rentedBooks WHERE bookId = ?";
+        String sql = "SELECT members.name,books.title,rentedAt,overdrawn,rentedBooks.bookId,rentedBooks.userId FROM rentedBooks,members,books Where members.userId=rentedBooks.userId AND books.bookId= ? Group By books.title";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -142,7 +146,10 @@ public class RentedAtRepository {
                 RentedBooks rentedBook = new RentedBooks();
                 rentedBook.setBookId(resultSet.getInt("bookId"));
                 rentedBook.setUserId(resultSet.getInt("userId"));
+                rentedBook.setRentedAt(resultSet.getDate("rentedAt"));
                 rentedBook.setOverdrawn(resultSet.getString("overdrawn"));
+                rentedBook.setName(resultSet.getString("name"));
+                rentedBook.setTitle(resultSet.getString("title"));
                 rentedBooks.add(rentedBook);
             }
             return rentedBooks;

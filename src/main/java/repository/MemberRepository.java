@@ -43,13 +43,13 @@ public class MemberRepository {
 
     }
 
-    public void updateNameById(int id,String newName) {
+    public void updateNameById(int id, String newName) {
         String sql = "Update members SET name= ? Where userId = ?";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {
-            prepareStatement.setString(1,newName);
+            prepareStatement.setString(1, newName);
             prepareStatement.setInt(2, id);
             prepareStatement.executeUpdate();
 

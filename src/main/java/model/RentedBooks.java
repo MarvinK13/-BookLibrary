@@ -7,6 +7,8 @@ public class RentedBooks {
     private int userId;
     private Date rentedAt;
     private String overdrawn;
+    private String name;
+    private String title;
 
     public RentedBooks(int bookId, int memberId) {
         this.bookId = bookId;
@@ -50,11 +52,27 @@ public class RentedBooks {
         this.overdrawn = overdrawn;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Book= " +
-                "bookId= " + bookId +
-                "| userId= " + userId + '\'' +
+                "Member= " + name +
+                "| title= " + title + '\'' +
                 "| rentedAt= " + rentedAt + '\'' +
                 "| overdrawn= " + overdrawn;
     }

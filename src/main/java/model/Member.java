@@ -10,10 +10,10 @@ public class Member {
     private Timestamp birthday;
     private String active;
 
-    public Member(String name,String email,Timestamp birthday) {
+    public Member(String name, String email, Timestamp birthday) {
         this.name = name;
-        this.email =email;
-        this.birthday =birthday;
+        this.email = email;
+        this.birthday = birthday;
     }
 
     public Member() {
@@ -67,6 +67,6 @@ public class Member {
                 "| id= " + id +
                 "| email= " + email +
                 "| birthday= " + birthday +
-                "| active= "+active+'\'';
+                "| active= " + active + '\'';
     }
 }
