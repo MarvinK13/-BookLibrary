@@ -3,6 +3,7 @@ package repository;
 import model.Book;
 
 import configuration.DatabaseConnection;
+import service.IllegalBookException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -162,6 +163,7 @@ public class BookRepository {
             return books;
         } catch (SQLException exception) {
             System.out.println("Error while connecting to database " + exception);
+
         }
 
         return null;

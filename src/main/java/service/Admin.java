@@ -7,6 +7,8 @@ import repository.BookRepository;
 import repository.MemberRepository;
 import repository.RentedAtRepository;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class Admin {
@@ -15,7 +17,7 @@ public class Admin {
     private MemberRepository repo2 = new MemberRepository();
     private RentedAtRepository repository = new RentedAtRepository();
 
-    public void addBook(String author,String title,int pages,int ISBN ) {
+    public void addBook(String author, String title, int pages, int ISBN) {
         Book book = new Book(author, title, pages, ISBN);
 
         repo.addBook(book);
@@ -31,9 +33,23 @@ public class Admin {
         System.out.println("");
     }
 
-    public void addMember(String name) {
-        Member member = new Member(name);
+    public void addMember(String name, String email, Timestamp birthday) {
+        Member member = new Member(name, email, birthday);
         repo2.addMember(member);
+        List<Member> members = repo2.findAllMembers();
+
+        System.out.println("==============================");
+        System.out.println("List of members: ");
+        System.out.println("");
+
+        members.forEach(System.out::println);
+
+        System.out.println("==============================");
+        System.out.println("");
+    }
+
+    public void removeMember(int userId) {
+        repo2.removeMemberById(userId);
         List<Member> members = repo2.findAllMembers();
 
         System.out.println("==============================");
@@ -60,7 +76,7 @@ public class Admin {
         System.out.println("");
     }
 
-    public void setOverDrawnBook(int bookId,int memberId,String overdrawn) {
+    public void setOverDrawnBook(int bookId, int memberId, String overdrawn) {
 
         RentedBooks rentedBooks = new RentedBooks(bookId, memberId);
         repository.modifyOverDrawn(bookId, memberId, overdrawn);

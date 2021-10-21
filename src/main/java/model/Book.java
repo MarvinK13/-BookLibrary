@@ -73,8 +73,8 @@ public class Book {
     public String toString() {
         return "Book= " +
                 "ISBN= " + ISBN +
-                "| title= '" + title + '\'' +
-                "| author= '" + author + '\'' +
+                "| title= " + title + '\'' +
+                "| author= " + author + '\'' +
                 "| pages= " + pages;
     }
 }

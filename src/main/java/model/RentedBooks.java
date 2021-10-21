@@ -54,8 +54,8 @@ public class RentedBooks {
     public String toString() {
         return "Book= " +
                 "bookId= " + bookId +
-                "| userId= '" + userId + '\'' +
-                "| rentedAt= '" + rentedAt + '\'' +
+                "| userId= " + userId + '\'' +
+                "| rentedAt= " + rentedAt + '\'' +
                 "| overdrawn= " + overdrawn;
     }
 }

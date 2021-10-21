@@ -3,10 +3,7 @@ package repository;
 import configuration.DatabaseConnection;
 import model.Member;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,12 +12,13 @@ public class MemberRepository {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public void addMember(Member member) {
-        String sql = "INSERT INTO members(name) VALUES(?)";
-//TODO: email gebDatum
+        String sql = "INSERT INTO members(name,email,birthday) VALUES(?,?,?)";
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {
             prepareStatement.setString(1, member.getName());
+            prepareStatement.setString(2, member.getEmail());
+            prepareStatement.setTimestamp(3, member.getBirthday());
 
             prepareStatement.executeUpdate();
             System.out.println("Finished Task");
@@ -31,12 +29,28 @@ public class MemberRepository {
     }
 
     public void removeMemberById(int id) {
-        String sql = "DELETE FROM members WHERE userId = ?";
+        String sql = "Update members SET active= 'false' Where userId = ?";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
         ) {
             prepareStatement.setInt(1, id);
+            prepareStatement.executeUpdate();
+
+        } catch (SQLException exception) {
+            System.out.println("Error while connecting to database " + exception);
+        }
+
+    }
+
+    public void updateNameById(int id,String newName) {
+        String sql = "Update members SET name= ? Where userId = ?";
+
+        try (Connection databaseConnection = this.databaseConnection.getConnection();
+             PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
+        ) {
+            prepareStatement.setString(1,newName);
+            prepareStatement.setInt(2, id);
             prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {
@@ -75,9 +89,12 @@ public class MemberRepository {
 
             List<Member> members = new LinkedList<>();
             while (resultSet.next()) {
-                Member member=new Member();
+                Member member = new Member();
                 member.setId(resultSet.getInt("userId"));
                 member.setName(resultSet.getString("name"));
+                member.setEmail(resultSet.getString("email"));
+                member.setBirthday(resultSet.getTimestamp("birthday"));
+                member.setActive(resultSet.getString("active"));
                 members.add(member);
             }
             resultSet.close();
@@ -101,6 +118,9 @@ public class MemberRepository {
             Member member = new Member();
             member.setId(resultSet.getInt("userId"));
             member.setName(resultSet.getString("name"));
+            member.setEmail(resultSet.getString("email"));
+            member.setBirthday(resultSet.getTimestamp("birthday"));
+            member.setActive(resultSet.getString("active"));
             resultSet.close();
 
             return member;
@@ -141,6 +161,9 @@ public class MemberRepository {
                 Member member = new Member();
                 member.setId(resultSet.getInt("userId"));
                 member.setName(resultSet.getString("name"));
+                member.setEmail(resultSet.getString("email"));
+                member.setBirthday(resultSet.getTimestamp("birthday"));
+                member.setActive(resultSet.getString("active"));
                 members.add(member);
             }
             return members;

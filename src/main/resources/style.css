@@ -31,6 +31,7 @@ tr:hover {
     background-color: rgba(0, 165, 210, 0.51);
 
 }
+
 tr {
     width: 100%;
     height: 70px;
@@ -58,6 +59,40 @@ button{
 button:hover{
     background-image: url('G.jpg');
     background-size: 150px;
+}
+@media only screen and (max-width: 768px) {
+    header{
+        width: auto;
+        height: auto;
+        font-size: 10px;
+    }
+    button{
+        height: 45px;
+        width: 45px;
+        font-size: 9px;
+    }
+    button:hover{
+        background-image: url('G.jpg');
+        background-size: 45px;
+    }
+    table{
+        font-size: 8px;
+        word-wrap: break-word;
+
+    }
+    td {
+        margin: auto;
+    }
+    th {
+        width: 100%;
+        height: 24%;
+        margin: auto;
+    }
+    tr {
+        word-wrap: break-word;
+        margin: auto;
+        white-space:nowrap
+    }
 }
 
 
