@@ -3,7 +3,6 @@ package repository;
 import model.Book;
 
 import configuration.DatabaseConnection;
-import service.IllegalBookException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,11 @@ public class BookRepository {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public BookRepository() {
-
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver class");
+        }
     }
 
     public void addBook(Book book) {
@@ -145,6 +148,32 @@ public class BookRepository {
 
     public List<Book> findAllBooks() {
         String sql = "SELECT * FROM books";
+
+        try (Connection databaseConnection = this.databaseConnection.getConnection();
+             PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
+             ResultSet resultSet = prepareStatement.executeQuery();
+        ) {
+            List<Book> books = new LinkedList<>();
+            while (resultSet.next()) {
+                Book book = new Book();
+                book.setId(resultSet.getInt("bookId"));
+                book.setAuthor(resultSet.getString("author"));
+                book.setTitle(resultSet.getString("title"));
+                book.setPages(resultSet.getInt("pages"));
+                book.setISBN(resultSet.getInt("ISBN"));
+                books.add(book);
+            }
+            return books;
+        } catch (SQLException exception) {
+            System.out.println("Error while connecting to database " + exception);
+
+        }
+
+        return null;
+    }
+
+    public List<Book> findAllNotRentedBooks() {
+        String sql = "SELECT * FROM books Where books.bookid Not  IN (Select rentedBooks.bookId from rentedBooks)";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);

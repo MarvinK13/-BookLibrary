@@ -8,7 +8,6 @@ import repository.MemberRepository;
 import repository.RentedAtRepository;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public class Admin {
@@ -62,7 +61,7 @@ public class Admin {
         System.out.println("");
     }
 
-    public void seeRentedBooks() {
+    public List<RentedBooks> seeRentedBooks() {
         RentedBooks rentedBooks = new RentedBooks();
         List<RentedBooks> rentedBooks1 = repository.findAllRentedBooks();
 //TODO: name book title ,isbn
@@ -74,6 +73,7 @@ public class Admin {
 
         System.out.println("==============================");
         System.out.println("");
+        return rentedBooks1;
     }
 
     public void setOverDrawnBook(int bookId, int memberId, String overdrawn) {

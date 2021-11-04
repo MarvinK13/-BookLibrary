@@ -70,10 +70,10 @@ public class RentedBooks {
 
     @Override
     public String toString() {
-        return "Book= " +
-                "Member= " + name +
-                "| title= " + title + '\'' +
-                "| rentedAt= " + rentedAt + '\'' +
-                "| overdrawn= " + overdrawn;
+        return "Book= (" +
+                "Member: " + name +
+                "| title: " + title + '\'' +
+                "| rentedAt: " + rentedAt + '\'' +
+                "| overdrawn: " + overdrawn+" |)";
     }
 }

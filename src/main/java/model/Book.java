@@ -72,7 +72,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book= " +
-                "ISBN= " + ISBN +
+                "| ISBN= " + ISBN +
                 "| title= " + title + '\'' +
                 "| author= " + author + '\'' +
                 "| pages= " + pages;

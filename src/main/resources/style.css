@@ -1,99 +1,112 @@
 
 .header {
+    padding: 20px 0;
     text-align: center;
     display: inline-block;
     width: 100%;
+    border-radius: 8px;
     height: 120px;
     box-sizing: border-box;
-    font-family: Arial
+    font-family: Arial;
+    color: white;
+    background-color: dodgerblue;
+
 }
-table {
-    font-size: 25px;
-    table-layout: fixed;
-    width: 100%;
-    font-family: Arial
-}
-td {
-    border-spacing: 30px;
+
+h2 {
+    padding: 50px 0;
     text-align: center;
-    border: 1px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-th {
-    width: 100%;
-    height: 70px;
-    border-radius: 5px;
-    background-color: lightgray;
-}
-tr:hover {
-    background-color: rgba(0, 165, 210, 0.51);
-
-}
-
-tr {
-    width: 100%;
-    height: 70px;
-    border-radius: 5px;
-    background-color: whitesmoke;
-
-}
-
-button{
-    transition: width 2s, height 4s;
+    margin-top: 25px;
     border-radius: 8px;
-    border: none;
+    background-color: orange;
+    font-size: 30px;
+    font-family: Arial;
+    width: 85%;
+    height: 40px;
+    color: black;
+}
+
+.Booktitle{
+
+    margin:0 auto;
+    margin-top: 50px;
+    font-size: 35px;
+    font-family: Arial;
+    border-radius: 8px;
+    width: 35%;
+    height: 75px;
+    border-color: dodgerblue;
+    background-color: dodgerblue;
+    color: white;
+}
+
+.dropdown{
+    margin:0 auto;
+    margin-top: 50px;
+    font-size: 35px;
+    font-family: Arial;
+    border-color: dodgerblue;
+    margin-top: 50px;
+    width: 35%;
+    height: 75px;
+    border-radius: 8px;
+    border-color: black;
+    background-color: dodgerblue;
+    color: white;
+}
+.submit{
+    margin:0 auto;
+    margin-top: 100px;
+    border-radius: 8px;
+    border-color: dodgerblue;
     font-size: 16px;
-    margin: 4px 2px;
+    cursor: pointer;
+    height: 75px;
+    width: 30%;
+    color: black;
+}
+
+button {
+    margin:0 auto;
+    margin-top: 25px;
+    border-radius: 8px;
+    border-color: dodgerblue;
+    font-size: 16px;
     cursor: pointer;
     height: 150px;
-    width: 150px;
-    margin: 10px 10px;
+    width: 75%;
+    color: black;
+
+}
+
+button:hover {
+    box-shadow: 0px 8px 16px 0px black;
+    background-color: dodgerblue;
     color: white;
-    background-color: black;
-
-
-
 }
-button:hover{
-    background-image: url('G.jpg');
-    background-size: 150px;
+.bookback{
+    background-color: orange;
+    width:  25%;
+    height: 125px;
 }
+
 @media only screen and (max-width: 768px) {
-    header{
+    header {
         width: auto;
         height: auto;
         font-size: 10px;
     }
-    button{
+
+    button {
         height: 45px;
         width: 45px;
         font-size: 9px;
     }
-    button:hover{
-        background-image: url('G.jpg');
-        background-size: 45px;
-    }
-    table{
-        font-size: 8px;
-        word-wrap: break-word;
 
+    button:hover {
+        box-shadow: 0px 8px 16px 0px black;
+        background-color: dodgerblue;
+        color: white;
     }
-    td {
-        margin: auto;
-    }
-    th {
-        width: 100%;
-        height: 24%;
-        margin: auto;
-    }
-    tr {
-        word-wrap: break-word;
-        margin: auto;
-        white-space:nowrap
-    }
+
 }
-
-
-
