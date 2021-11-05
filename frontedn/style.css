@@ -1,0 +1,112 @@
+
+.header {
+    padding: 20px 0;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    border-radius: 8px;
+    height: 120px;
+    box-sizing: border-box;
+    font-family: Arial;
+    color: white;
+    background-color: dodgerblue;
+
+}
+
+h2 {
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 25px;
+    border-radius: 8px;
+    background-color: orange;
+    font-size: 30px;
+    font-family: Arial;
+    width: 85%;
+    height: 40px;
+    color: black;
+}
+
+.Booktitle{
+
+    margin:0 auto;
+    margin-top: 50px;
+    font-size: 35px;
+    font-family: Arial;
+    border-radius: 8px;
+    width: 35%;
+    height: 75px;
+    border-color: dodgerblue;
+    background-color: dodgerblue;
+    color: white;
+}
+
+.dropdown{
+    margin:0 auto;
+    margin-top: 50px;
+    font-size: 35px;
+    font-family: Arial;
+    border-color: dodgerblue;
+    margin-top: 50px;
+    width: 35%;
+    height: 75px;
+    border-radius: 8px;
+    border-color: black;
+    background-color: dodgerblue;
+    color: white;
+}
+.submit{
+    margin:0 auto;
+    margin-top: 100px;
+    border-radius: 8px;
+    border-color: dodgerblue;
+    font-size: 16px;
+    cursor: pointer;
+    height: 75px;
+    width: 30%;
+    color: black;
+}
+
+button {
+    margin:0 auto;
+    margin-top: 25px;
+    border-radius: 8px;
+    border-color: dodgerblue;
+    font-size: 16px;
+    cursor: pointer;
+    height: 150px;
+    width: 75%;
+    color: black;
+
+}
+
+button:hover {
+    box-shadow: 0px 8px 16px 0px black;
+    background-color: dodgerblue;
+    color: white;
+}
+.bookback{
+    background-color: orange;
+    width:  25%;
+    height: 125px;
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        width: auto;
+        height: auto;
+        font-size: 10px;
+    }
+
+    button {
+        height: 45px;
+        width: 45px;
+        font-size: 9px;
+    }
+
+    button:hover {
+        box-shadow: 0px 8px 16px 0px black;
+        background-color: dodgerblue;
+        color: white;
+    }
+
+}

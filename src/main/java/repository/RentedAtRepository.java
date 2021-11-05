@@ -15,6 +15,15 @@ public class RentedAtRepository {
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
+    public RentedAtRepository() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver class");
+        }
+    }
+
+
     public void addRented(RentedBooks rentedBooks) {
         String sql = "INSERT INTO rentedBooks (bookId,userId,rentedAt,overdrawn,givenBack)VALUES ((SELECT bookId from books Where bookId= ?),(SELECT userId from members Where userId= ?),?,?,null)";
         try (Connection databaseConnection = this.databaseConnection.getConnection();

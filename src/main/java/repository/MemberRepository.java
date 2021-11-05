@@ -11,6 +11,14 @@ public class MemberRepository {
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
+    public MemberRepository() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver class");
+        }
+    }
+
     public void addMember(Member member) {
         String sql = "INSERT INTO members(name,email,birthday) VALUES(?,?,?)";
         try (Connection databaseConnection = this.databaseConnection.getConnection();
