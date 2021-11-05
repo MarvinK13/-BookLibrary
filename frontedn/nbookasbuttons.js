@@ -3,17 +3,17 @@ fetch('http://localhost:8080/Gradle___org_example____BookLibrary_1_0_SNAPSHOT_wa
         return response.json();
     })
     .then(function (rentedbooks) {
-        showCarsAsDivs(rentedbooks);
+        showRentedBooksAsButtons(rentedbooks);
     })
     .catch(function (err) {
         console.log('error: ' + err);
     });
 
-function showCarsAsDivs(rentedbooks) {
-    const mainContainer = document.getElementById("notavailable");
+function showRentedBooksAsButtons(rentedbooks) {
+    const notavadiblecontainer = document.getElementById("notavailable");
     for (var i = 0; i < rentedbooks.length; i++) {
         const notbutton = document.createElement("button");
         notbutton.innerHTML = 'Title: '+ rentedbooks[i].title + ' Overdrawn: '+ rentedbooks[i].overdrawn + ' ISBN: ' + rentedbooks[i].userId;
-        mainContainer.appendChild(notbutton)
+        notavadiblecontainer.appendChild(notbutton)
     }
 }
