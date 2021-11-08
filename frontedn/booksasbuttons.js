@@ -13,7 +13,12 @@ function showBooksAsButtons(books) {
     const availablecontainer = document.getElementById("available");
     for (var i = 0; i < books.length; i++) {
         const button = document.createElement("button");
-       button.innerHTML = 'Title: '+ books[i].title + ' Author: '+ books[i].author + ' ISBN: ' + books[i].isbn;
+        button.innerHTML = '<b> Title: ' + books[i].title + '</b><br>' +
+            ' Author: ' + books[i].author + '<br>' +
+            ' ISBN: ' + books[i].isbn;
+        button.onclick = function () {
+            location.href = 'RentBook.html'
+        };
         availablecontainer.appendChild(button)
     }
 }

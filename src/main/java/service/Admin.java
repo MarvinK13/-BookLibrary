@@ -45,6 +45,7 @@ public class Admin {
         return rentedBooks1;
     }
 
+
     public List<Book> seeallBooks() {
         List<Book> rentedBooks1 = repo.findAllBooks();
         return rentedBooks1;

@@ -27,17 +27,17 @@ public class bookservlet extends HttpServlet {
         if (pathinfo == null || pathinfo.equals("/")) {
 
             List<Book> books = admin.seeallBooks();
-            response.setHeader("Access-Control-Allow-Origin","*");
+            response.setHeader("Access-Control-Allow-Origin", "*");
             PrintWriter printWriter = response.getWriter();
 
             String responseJson = new ObjectMapper().writer().writeValueAsString(books);
             printWriter.write(responseJson);
             printWriter.flush();
 
-        } else if (pathinfo.equals("/rentedbooks")){
+        } else if (pathinfo.equals("/rentedbooks")) {
 
             List<RentedBooks> books = admin.seeRentedBooks();
-            response.setHeader("Access-Control-Allow-Origin","*");
+            response.setHeader("Access-Control-Allow-Origin", "*");
             PrintWriter printWriter = response.getWriter();
 
             String responseJson = new ObjectMapper().writer().writeValueAsString(books);
