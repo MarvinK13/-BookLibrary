@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="A Page that no one needs">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Marvin Klein">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rent a book</title>
+    <!-- ... -->
+    <link href="style.css" rel="stylesheet">
+    <!-- ... -->
+
+</head>
+
+<body>
+
+<div class="header" align="center">
+    <h1>Book Library | Rent Book</h1>
+</div>
+
+<div class="Booktitle" align="center">
+
+    <p>Book Title Placeholder</p>
+
+</div>
+
+<div class="dropdown" align="center">
+    <label for="users">Choose a user: </label>
+
+    <select name="user" id="users">
+        <option value="1">Marvin</option>
+        <option value="2">Elias</option>
+        <option value="3">Fabian</option>
+        <option value="4">Alex</option>
+    </select>
+
+</div>
+
+<form id="saveBooksForm"
+      action="http://localhost:8080/Gradle___org_example____BookLibrary_1_0_SNAPSHOT_war/books" method="post">
+    <table>
+        <tr>
+            <td><label for="addFormAuthor">Author:</label></td>
+            <td><input type="text" id="addFormAuthor" placeholder="An Author"></td>
+        </tr>
+        <tr>
+            <td><label for="addFormTitle">Title:</label></td>
+            <td><input type="text" id="addFormTitle" placeholder="A Book Title"></td>
+        </tr>
+        <tr>
+            <td><label for="addFormPages">Pages:</label></td>
+            <td><input type="text" id="addFormPages" placeholder="1000"></td>
+        </tr>
+        <tr>
+            <td><label for="addFormISBN">ISBN:</label></td>
+            <td><input type="text" id="addFormISBN" placeholder="1000"></td>
+        </tr>
+        <tr class="saveBooksButton">
+            <td colspan="2">
+                <input type="submit" value="submit">
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+<script src="addBook.js"></script>
+
+</body>
+</html>

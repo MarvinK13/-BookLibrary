@@ -52,8 +52,18 @@ public class bookservlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String bodyAsJsonString = getBodyAsJson(request);
+        System.out.println(bodyAsJsonString+" ist leer?");
         Book book = new ObjectMapper().readValue(bodyAsJsonString, Book.class);
         admin.addBook2(book);
+    }
+
+    @Override
+    protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        response.setHeader("Access-Control-Max-Age", "86400");
+        response.setHeader("Allow", "GET, POST, DELETE, OPTIONS");
     }
 
     private String getBodyAsJson(HttpServletRequest request) throws IOException {
