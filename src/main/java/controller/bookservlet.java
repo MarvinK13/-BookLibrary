@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -46,5 +47,23 @@ public class bookservlet extends HttpServlet {
 
         }
         System.out.println("Hello");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String bodyAsJsonString = getBodyAsJson(request);
+        Book book = new ObjectMapper().readValue(bodyAsJsonString, Book.class);
+        admin.addBook2(book);
+    }
+
+    private String getBodyAsJson(HttpServletRequest request) throws IOException {
+        BufferedReader reader = request.getReader();
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line.trim());
+        }
+        String jsonString = sb.toString();
+        return jsonString;
     }
 }

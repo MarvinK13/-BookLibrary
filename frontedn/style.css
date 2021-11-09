@@ -26,9 +26,9 @@ h2 {
     color: black;
 }
 
-.Booktitle{
+.Booktitle {
 
-    margin:0 auto;
+    margin: 0 auto;
     margin-top: 50px;
     font-size: 35px;
     font-family: Arial;
@@ -40,8 +40,8 @@ h2 {
     color: white;
 }
 
-.dropdown{
-    margin:0 auto;
+.dropdown {
+    margin: 0 auto;
     margin-top: 50px;
     font-size: 35px;
     font-family: Arial;
@@ -56,43 +56,54 @@ h2 {
 }
 
 button {
-    margin:0 auto;
+    margin: 0 auto;
     margin-top: 25px;
     border-radius: 8px;
     border-color: dodgerblue;
-    font-size: 16px;
     cursor: pointer;
     height: 125px;
-    width: 60%;
-    color: black;
+    width: 500px;
 
 }
-
-p{
-    margin:0 auto;
-    margin-top: 25px;
+div{
     font-size: 16px;
+    color: black;
     font-family: Arial;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+    order: 1;
+}
+
+p {
+    margin: 0 auto;
+    margin-top: 25px;
     border-radius: 8px;
-    width: 60%;
-    height: 125px;
+    width: 500px;
+    padding: 20px 0;
     border-color: dodgerblue;
     background-color: dodgerblue;
     color: white;
 }
+
 button:hover {
     box-shadow: 0px 8px 16px 0px black;
     background-color: dodgerblue;
     color: white;
 }
-.bookback{
+
+.bookback {
     background-color: orange;
-    width:  25%;
+    width: 25%;
     height: 125px;
 }
 
-.submit{
-    margin:0 auto;
+.submit {
+    margin: 0 auto;
     margin-top: 100px;
     border-radius: 8px;
     border-color: dodgerblue;

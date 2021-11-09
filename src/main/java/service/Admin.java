@@ -33,6 +33,11 @@ public class Admin {
         return members;
     }
 
+    public void addBook2(Book book) {
+        repo.addBook(book);
+        List<Member> members = repo2.findAllMembers();
+    }
+
     public List<Member> removeMember(int userId) {
         repo2.removeMemberById(userId);
         List<Member> members = repo2.findAllMembers();
