@@ -2,7 +2,6 @@ package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Book;
-import model.Member;
 import model.RentedBooks;
 import service.Admin;
 import service.User;
@@ -16,8 +15,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "bookservlet", value = "/books/*")
-public class bookservlet extends HttpServlet {
+@WebServlet(name = "rentedBookservlet", value = "/rentedbooks/*")
+public class rentedBookservlet extends HttpServlet {
 
     private Admin admin = new Admin();
     private User user = new User();
@@ -28,31 +27,11 @@ public class bookservlet extends HttpServlet {
         String pathinfo = request.getPathInfo();
         if (pathinfo == null || pathinfo.equals("/")) {
 
-            List<Book> books = admin.seeallBooks();
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            PrintWriter printWriter = response.getWriter();
-
-            String responseJson = new ObjectMapper().writer().writeValueAsString(books);
-            printWriter.write(responseJson);
-            printWriter.flush();
-
-        } else if (pathinfo.equals("/rentedbooks")) {
-
             List<RentedBooks> rentedBooks = admin.seeRentedBooks();
             response.setHeader("Access-Control-Allow-Origin", "*");
             PrintWriter printWriter = response.getWriter();
 
             String responseJson = new ObjectMapper().writer().writeValueAsString(rentedBooks);
-            printWriter.write(responseJson);
-            printWriter.flush();
-
-        } else if (pathinfo.equals("/members")) {
-
-            List<Member> members = admin.seeAllMembers();
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            PrintWriter printWriter = response.getWriter();
-
-            String responseJson = new ObjectMapper().writer().writeValueAsString(members);
             printWriter.write(responseJson);
             printWriter.flush();
 
@@ -62,27 +41,12 @@ public class bookservlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String pathinfo = request.getPathInfo();
-        if (pathinfo.equals("/rentedbooks/rentbook")) {
-
-            String bodyAsJsonString = getBodyAsJson(request);
-            System.out.println(bodyAsJsonString + "rentedbooks ist leer?");
-            RentedBooks book = new ObjectMapper().readValue(bodyAsJsonString, RentedBooks.class);
-            admin.addRentedBook(book);
-
-        } else if (pathinfo.equals("/addbook")) {
-
-            String bodyAsJsonString = getBodyAsJson(request);
-            System.out.println(bodyAsJsonString + " ist leer?");
-            Book book = new ObjectMapper().readValue(bodyAsJsonString, Book.class);
-            admin.addBook2(book);
-        }
 
     }
 
     @Override
     protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Origin","*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setHeader("Access-Control-Max-Age", "86400");

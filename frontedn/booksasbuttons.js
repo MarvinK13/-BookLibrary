@@ -17,6 +17,7 @@ function showBooksAsButtons(books) {
             ' Author: ' + books[i].author + '<br>' +
             ' ISBN: ' + books[i].isbn;
         button.onclick = function () {
+            location.href = 'rentbook.html'
         };
         availablecontainer.appendChild(button)
     }

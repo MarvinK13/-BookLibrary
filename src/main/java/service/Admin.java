@@ -35,7 +35,15 @@ public class Admin {
 
     public void addBook2(Book book) {
         repo.addBook(book);
-        List<Member> members = repo2.findAllMembers();
+    }
+
+    public void addRentedBook(RentedBooks book) {
+        int checker = repository.findBookIdbyUser(book.getBookId(), book.getUserId());
+        if (checker == 0) {
+            repository.addRented(book);
+        } else {
+            throw new IllegalBookException("You can`t rent a book more then once a DAY");
+        }
     }
 
     public List<Member> removeMember(int userId) {
@@ -48,6 +56,12 @@ public class Admin {
     public List<RentedBooks> seeRentedBooks() {
         List<RentedBooks> rentedBooks1 = repository.findAllRentedBooks();
         return rentedBooks1;
+    }
+
+
+    public List<Member> seeAllMembers() {
+        List<Member> members = repo2.findAllMembers();
+        return members;
     }
 
 

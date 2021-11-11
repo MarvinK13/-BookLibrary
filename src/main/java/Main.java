@@ -14,7 +14,7 @@ public class Main {
 
         Admin admin=new Admin();
         User user=new User();
-        user.rentBook(3,1);
+        user.rentBook(1,1);
 
 
     }

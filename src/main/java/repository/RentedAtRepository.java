@@ -90,7 +90,7 @@ public class RentedAtRepository {
     }
 
     public List<RentedBooks> findAllRentedBooks() {
-        String sql = "SELECT members.name,books.title,rentedAt,overdrawn,rentedBooks.bookId,rentedBooks.userId FROM rentedBooks,members,books where books.bookid=rentedBooks.bookId and givenback is NULL Group By books.title";
+        String sql = "select books.title,rentedBooks.bookId,members.name,rentedBooks.userId,rentedAt,overdrawn from rentedBooks Left Join members on members.userId =rentedBooks.userId Left Join books on books.bookId=rentedBooks.bookId Where givenBack is NULL";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -190,8 +190,13 @@ public class RentedAtRepository {
             resultSet.close();
 
             //formats date so it can be
-            if (rentedAt != null) {
-                Date fisrtDate = new Date(timestamp.getTime());
+            if (rentedAt == null) {
+                return 0;
+            }
+
+
+            /*
+            Date fisrtDate = new Date(timestamp.getTime());
                 Date secondDate = new Date(rentedAt.getTime());
                 DateFormat df = new SimpleDateFormat("YYYY-MM-dd");
                 String firstDateStr = df.format(fisrtDate);
@@ -199,9 +204,6 @@ public class RentedAtRepository {
                 if (firstDateStr.equals(secondDateStr)) {
                     return 1;
                 }
-            }
-
-
             if (id == 0) {
                 return 0;
             } else if (id != 0 && date != null) {
@@ -209,6 +211,7 @@ public class RentedAtRepository {
             } else {
                 return 1;
             }
+             */
 
         } catch (SQLException exception) {
             System.out.println("Error while connecting to database " + exception);

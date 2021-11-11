@@ -1,4 +1,4 @@
-const saveBooksForm = document.getElementById('saveBooksForm');
+const rentbooks = document.getElementById('rentbooks');
 
 async function handleAddForm(event) {
     event.preventDefault();
@@ -6,17 +6,13 @@ async function handleAddForm(event) {
     const form = event.currentTarget;
     const url = form.action;
 
-    const author = document.getElementById("addFormAuthor").value;
-    const title = document.getElementById("addFormTitle").value;
-    const pages = document.getElementById("addFormPages").value;
-    const isbn = document.getElementById("addFormISBN").value;
+    const userId = document.getElementById("dropdownmembers").value;
+    const bookId = document.getElementById("dropdownbooks").value;
 
-    let book = new Object();
-    book.author = author;
-    book.title = title;
-    book.pages = pages;
-    book.isbn = isbn;
-    let bookJson = JSON.stringify(book)
+    let rentedbooks = new Object();
+    rentedbooks.userId = userId;
+    rentedbooks.bookId= bookId;
+    let rentedBookjson = JSON.stringify(rentedbooks)
 
     try {
         const fetchOptions = {
@@ -25,7 +21,7 @@ async function handleAddForm(event) {
                 "Content-Type": "application/json",
                 Accept: "application/json",
             },
-            body: "rentbook"+bookJson
+            body: rentedBookjson
         };
 
         const response = await fetch(url, fetchOptions);
@@ -40,5 +36,5 @@ async function handleAddForm(event) {
 }
 
 window.addEventListener('load', (event) => {
-    saveBooksForm.addEventListener("submit", handleAddForm);
+    rentbooks.addEventListener("submit", handleAddForm);
 });
