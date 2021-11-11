@@ -11,13 +11,10 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
-        Calendar calender = Calendar.getInstance();
-        calender.set(2004,6,13);
-        Date date=calender.getTime();
-        Timestamp timestamp=new Timestamp(date.getTime());
+
         Admin admin=new Admin();
         User user=new User();
-        user.getBooksById(1);
+        user.rentBook(3,1);
 
 
     }

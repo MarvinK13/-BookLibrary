@@ -17,7 +17,6 @@ function showBooksAsButtons(books) {
             ' Author: ' + books[i].author + '<br>' +
             ' ISBN: ' + books[i].isbn;
         button.onclick = function () {
-            location.href = 'AddBook.html'
         };
         availablecontainer.appendChild(button)
     }

@@ -37,11 +37,11 @@ public class bookservlet extends HttpServlet {
 
         } else if (pathinfo.equals("/rentedbooks")) {
 
-            List<RentedBooks> books = admin.seeRentedBooks();
+            List<RentedBooks> rentedBooks = admin.seeRentedBooks();
             response.setHeader("Access-Control-Allow-Origin", "*");
             PrintWriter printWriter = response.getWriter();
 
-            String responseJson = new ObjectMapper().writer().writeValueAsString(books);
+            String responseJson = new ObjectMapper().writer().writeValueAsString(rentedBooks);
             printWriter.write(responseJson);
             printWriter.flush();
 

@@ -90,7 +90,7 @@ public class RentedAtRepository {
     }
 
     public List<RentedBooks> findAllRentedBooks() {
-        String sql = "SELECT members.name,books.title,rentedAt,overdrawn,rentedBooks.bookId,rentedBooks.userId FROM rentedBooks,members,books Where members.userId=rentedBooks.userId Group By books.title";
+        String sql = "SELECT members.name,books.title,rentedAt,overdrawn,rentedBooks.bookId,rentedBooks.userId FROM rentedBooks,members,books where books.bookid=rentedBooks.bookId and givenback is NULL Group By books.title";
 
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class RentedAtRepository {
             }
             return rentedBooks;
         } catch (SQLException exception) {
-            System.out.println("Error while connecting to database " + exception);
+            System.out.println("Error while connecting to database at findAllRentedBooksByUserId " + exception);
         }
 
         return null;
