@@ -15,7 +15,7 @@ function showRentedBooksAsButtons(rentedbooks) {
         const notbutton = document.createElement("p");
         notbutton.innerHTML = '<b> Title: '+ rentedbooks[i].title + '</b><br>' +
             ' Overdrawn: '+ rentedbooks[i].overdrawn + '<br>' +
-            ' UserId: ' + rentedbooks[i].userId;
+            ' User: ' + rentedbooks[i].name;
         notavadiblecontainer.appendChild(notbutton)
     }
 }

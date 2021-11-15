@@ -9,10 +9,10 @@ async function handleAddForm(event) {
     const userId = document.getElementById("dropdownmembers").value;
     const bookId = document.getElementById("dropdownbooks").value;
 
-    let rentedbooks = new Object();
-    rentedbooks.userId = userId;
-    rentedbooks.bookId= bookId;
-    let rentedBookjson = JSON.stringify(rentedbooks)
+    let rentBook = new Object();
+    rentBook.userId = userId;
+    rentBook.bookId= bookId;
+    let rentedBookjson = JSON.stringify(rentBook)
 
     try {
         const fetchOptions = {

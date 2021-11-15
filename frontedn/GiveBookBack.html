@@ -21,31 +21,18 @@
     <h1>Book Library | Give bock back</h1>
 </div>
 
-<div class="Booktitle" align="center">
+<form id="givebookback" action="http://localhost:8080/Gradle___org_example____BookLibrary_1_0_SNAPSHOT_war/books/rentedbooks/givebookback"
+      method="post">
 
-    <label for="users">Choose A book </label>
+    <p>
+        <label for="books">Books:</label>
+        <select name="user" id="books">
+        </select>
+    </p>
 
-    <select name="user" id="books">
-        <option value="1">Marvin</option>
-    </select>
+    <input type="submit" value="submit" class="submit">
+</form>
 
-</div>
-
-<div class="dropdown" align="center">
-    <label for="users">Choose a user: </label>
-
-    <select name="user" id="users">
-        <option value="1">Marvin</option>
-        <option value="2">Elias</option>
-        <option value="3">Fabian</option>
-        <option value="4">Alex</option>
-    </select>
-
-</div>
-
-<div align="center">
-    <button class="submit">Submit</button>
-</div>
-
+<script src="givebockback.js"></script>
 </body>
 </html>

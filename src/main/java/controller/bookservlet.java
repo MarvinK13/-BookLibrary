@@ -26,6 +26,7 @@ public class bookservlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String pathinfo = request.getPathInfo();
+
         if (pathinfo == null || pathinfo.equals("/")) {
 
             List<Book> books = admin.seeallBooks();
@@ -76,6 +77,12 @@ public class bookservlet extends HttpServlet {
             System.out.println(bodyAsJsonString + " ist leer?");
             Book book = new ObjectMapper().readValue(bodyAsJsonString, Book.class);
             admin.addBook2(book);
+        } else if (pathinfo.equals("/givebookback")) {
+
+            String bodyAsJsonString = getBodyAsJson(request);
+            System.out.println(bodyAsJsonString + " ist leer?");
+            RentedBooks book = new ObjectMapper().readValue(bodyAsJsonString, RentedBooks.class);
+            admin.giveBookBack(book);
         }
 
     }

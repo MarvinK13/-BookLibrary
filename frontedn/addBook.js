@@ -25,7 +25,7 @@ async function handleAddForm(event) {
                 "Content-Type": "application/json",
                 Accept: "application/json",
             },
-            body: "rentbook"+bookJson
+            body: bookJson
         };
 
         const response = await fetch(url, fetchOptions);

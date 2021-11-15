@@ -71,7 +71,7 @@ public class RentedAtRepository {
         }
     }
 
-    public void giveBackRentedByBookId(int bookId, int userId) {
+    public void giveBackRentedByBookId(RentedBooks rentedBooks) {
         String sql = "UPDATE rentedBooks SET givenBack= ? WHERE bookId = ? AND userId = ?";
         try (Connection databaseConnection = this.databaseConnection.getConnection();
              PreparedStatement prepareStatement = databaseConnection.prepareStatement(sql);
@@ -79,8 +79,8 @@ public class RentedAtRepository {
             Calendar calender = Calendar.getInstance();
             Date now = calender.getTime();
             prepareStatement.setTimestamp(1, new Timestamp(now.getTime()));
-            prepareStatement.setInt(2, bookId);
-            prepareStatement.setInt(3, userId);
+            prepareStatement.setInt(2, rentedBooks.getBookId());
+            prepareStatement.setInt(3, rentedBooks.getUserId());
             prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {

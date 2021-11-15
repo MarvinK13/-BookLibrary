@@ -9,7 +9,7 @@ fetch('http://localhost:8080/Gradle___org_example____BookLibrary_1_0_SNAPSHOT_wa
         console.log('error: ' + err);
     });
 
-fetch('http://localhost:8080/Gradle___org_example____BookLibrary_1_0_SNAPSHOT_war/members')
+fetch('http://localhost:8080/Gradle___org_example____BookLibrary_1_0_SNAPSHOT_war/books/members')
     .then(function (response) {
         return response.json();
     })
@@ -25,11 +25,8 @@ function showAllBooks(books) {
     const mainContainer = document.getElementById("dropdownbooks");
     for (var i = 0; i < books.length; i++) {
         const option = document.createElement("option");
-
-        const booktitle = document.createElement("textarea")
-        booktitle.innerHTML =books[i].id;
-        booktitle.value = books[i].title;
-        option.appendChild(booktitle);
+        option.innerHTML =books[i].title;
+        option.value = books[i].id;
         mainContainer.appendChild(option);
     }
 }
@@ -38,17 +35,8 @@ function showAllMembers(members) {
     const mainContainer = document.getElementById("dropdownmembers");
     for (var i = 0; i < members.length; i++) {
         const option = document.createElement("option");
-
-        const booktitle = document.createElement("textarea")
-        booktitle.innerHTML = members[i].id;
-        booktitle.value = members[i].userId;
-        option.appendChild(booktitle);
+        option.innerHTML = members[i].name;
+        option.value = members[i].id;
         mainContainer.appendChild(option);
     }
-}
-
-
-
-function bttnFunc(){
-
 }

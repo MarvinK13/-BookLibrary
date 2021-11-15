@@ -46,6 +46,10 @@ public class Admin {
         }
     }
 
+    public void giveBookBack(RentedBooks rentedBooks) {
+        repository.giveBackRentedByBookId(rentedBooks);
+    }
+
     public List<Member> removeMember(int userId) {
         repo2.removeMemberById(userId);
         List<Member> members = repo2.findAllMembers();
